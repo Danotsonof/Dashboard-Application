@@ -1,0 +1,46 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    var count = 1;
+    var maleCount = Model.maleCount;
+    var femaleCount = Model.femaleCount;
+
+}
+@model OperationResponse
+
+    <img src="~/images/@Model.Photo" alt="Alternate Text" />
+
+<table class="table table-striped" onclick="pushData(female, male)">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+        </tr>
+    </thead>
+                
+    @{ foreach (var user in Model.AllUsers)
+        {
+            <tbody>
+                <tr>
+                    <th scope="col">@count</th>
+                    <th scope="col">@user.FirstName</th>
+                    <th scope="col">@user.LastName</th>
+                    <th scope="col">@user.Email</th>
+                </tr>
+            </tbody>
+            count++;
+        }
+    }
+</table>
+<input id="male" name="prodId" type="hidden" value=@maleCount>
+<input id="female" name="prodId" type="hidden" value=@femaleCount>
+<canvas id="myChart" width="200" height="200"></canvas>
+
+<form method="post" asp-action="Logout" asp-controller="Home">
+    <button type="submit">
+        Log Out
+    </button>
+</form>
