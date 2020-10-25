@@ -1,2 +1,2 @@
 # Dashboard-Application
- A simple dashbaord web application
+ A simple dashboard web application
